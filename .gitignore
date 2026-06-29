@@ -1,0 +1,5 @@
+entorno_flask/
+__pycache__/
+*.pyc
+.env
+.vscode/
