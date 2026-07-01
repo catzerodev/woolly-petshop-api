@@ -5,8 +5,13 @@ from config import Config
 from db import db
 
 from app.models.user_model import User
+from app.models.category_model import Category
+from app.models.product_model import Product
+from app.router import register_routes
+
 
 migrate = Migrate()
+
 
 
 def create_app():
@@ -17,6 +22,8 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
+    
+    register_routes(app)
 
     return app
 
