@@ -24,3 +24,17 @@ class CategoryResource(Resource):
             "message": "Category created successfully.",
             "id": category.id
         }, 201
+        
+    def get(self):
+
+        categories = CategoryService().get_all()
+
+        return [
+        {
+            "id": category.id,
+            "name": category.name,
+            "description": category.description,
+            "is_active": category.is_active
+        }
+        for category in categories
+    ], 200
