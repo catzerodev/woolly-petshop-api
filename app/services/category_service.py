@@ -25,3 +25,23 @@ class CategoryService:
         ).all()
 
         return categories
+    
+    def get_by_id(self, category_id: int) -> Category:
+        
+        category = Category.query.filter_by(
+            id=category_id,
+            is_active=True
+        ).first()
+
+        return category
+    
+    def update(self, category_id: int, data: CategorySchema) -> Category:
+        category = self.get_by_id(category_id)
+        category.name = data.name
+        category.description = data.description
+        db.session.commit() 
+        
+        return category
+    
+    
+    

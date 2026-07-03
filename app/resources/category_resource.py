@@ -1,3 +1,5 @@
+from unicodedata import category
+
 from flask import request
 from flask_restful import Resource
 from pydantic import ValidationError
@@ -38,3 +40,8 @@ class CategoryResource(Resource):
         }
         for category in categories
     ], 200
+        
+        
+
+        
+    
