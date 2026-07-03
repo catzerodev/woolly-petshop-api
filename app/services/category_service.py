@@ -43,5 +43,15 @@ class CategoryService:
         
         return category
     
+    def delete(self, category_id: int) -> bool:
+        category = self.get_by_id(category_id)
+        if category is None:
+            return False
+        category.is_active = False
+        db.session.commit()
+
+        return True
+        
+    
     
     

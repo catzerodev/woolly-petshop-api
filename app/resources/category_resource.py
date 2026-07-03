@@ -41,7 +41,8 @@ class CategoryResource(Resource):
         for category in categories
     ], 200
         
-        
+    
+       
 
         
     

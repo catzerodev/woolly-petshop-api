@@ -48,3 +48,14 @@ class CategoryDetailResource(Resource):
                 "is_active": category.is_active,
             },
         }, 200
+
+    def delete(self, category_id):
+        deleted = CategoryService().delete(category_id)
+        if not deleted:
+            return {"message": "Category not found."
+                    }, 404
+            
+        return {"message": "Category deleted successfully."
+                }, 200
+        
+        
