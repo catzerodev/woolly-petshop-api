@@ -12,8 +12,6 @@ from app.router import register_routes
 
 migrate = Migrate()
 
-
-
 def create_app():
 
     app = Flask(__name__)
