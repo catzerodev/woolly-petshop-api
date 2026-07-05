@@ -1,6 +1,7 @@
-from flask import Flask
+from flask import Flask, app
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
+from flasgger import Swagger
 
 from config import Config
 from db import db
@@ -13,6 +14,7 @@ from app.router import register_routes
 
 migrate = Migrate()
 jwt = JWTManager()
+swagger = Swagger()
 
 
 def create_app():
@@ -24,6 +26,7 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
+    swagger.init_app(app)
 
     register_routes(app)
 
