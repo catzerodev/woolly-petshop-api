@@ -6,6 +6,7 @@ from app.resources.product_detail_resource import ProductDetailResource
 from app.resources.product_resource import ProductResource
 from app.resources.auth_resource import RegisterResource
 from app.resources.auth_resource import LoginResource
+from app.resources.product_restock_resource import ProductRestockResource
 
 
 def register_routes(app):
@@ -39,7 +40,13 @@ def register_routes(app):
         LoginResource,
         '/login'
     )
-        
+    
+    api.add_resource(
+        ProductRestockResource,
+        '/products/<int:product_id>/restock'
+    )
+    
+    
     
     
     

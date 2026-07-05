@@ -66,3 +66,17 @@ class ProductService:
         db.session.commit()
 
         return True
+    
+    def restock(self, product_id, quantity):
+        
+        product = self.get_by_id(product_id)
+        if product is None:
+            return None
+        
+        product.stock += quantity
+        db.session.commit()
+        return product
+    
+    
+        
+        
