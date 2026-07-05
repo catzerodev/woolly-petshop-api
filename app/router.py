@@ -3,8 +3,8 @@ from app.resources.category_resource import CategoryResource
 from app.resources.category_detail_resource import CategoryDetailResource
 from app.resources.product_detail_resource import ProductDetailResource
 from app.resources.product_resource import ProductResource
-from app.resources.product_detail_resource import ProductDetailResource
-
+from app.resources.auth_resource import RegisterResource
+from app.resources.auth_resource import LoginResource
 
 
 def register_routes(app):
@@ -28,7 +28,18 @@ def register_routes(app):
         ProductDetailResource,
         "/products/<int:product_id>"
     )
-       
+    
+    api.add_resource(
+        RegisterResource,
+        "/register"
+    )
+    
+    api.add_resource(
+        LoginResource,
+        "/login"
+    )
+        
+    
     
     
     
