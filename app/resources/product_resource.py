@@ -1,5 +1,6 @@
 from flask import request
 from flask_restful import Resource
+from flask_jwt_extended import jwt_required
 from pydantic import ValidationError
 
 from app.schemas.product_schema import ProductSchema
@@ -7,7 +8,8 @@ from app.services.product_service import ProductService
 
 
 class ProductResource(Resource):
-
+    
+    @jwt_required()
     def post(self):
 
         try:

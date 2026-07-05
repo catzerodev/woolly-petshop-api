@@ -7,6 +7,7 @@ from app.models.user_model import User
 from app.schemas.auth_schema import LoginSchema, RegisterSchema
 from app.services.user_service import UserService
 from app.utils.helpers import hash_password, verify_password
+
 from db import db
 
 
@@ -56,7 +57,7 @@ class LoginResource(Resource):
 
         if user is None:
             return {
-                "message": "User not found."
+                'message': 'User not found.'
             }, 401
 
         is_valid = verify_password(
@@ -66,7 +67,7 @@ class LoginResource(Resource):
 
         if not is_valid:
             return {
-                "message": "Invalid credentials."
+                'message': 'Invalid credentials.'
             }, 401
 
         access_token = create_access_token(

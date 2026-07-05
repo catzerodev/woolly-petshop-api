@@ -1,5 +1,6 @@
 from app.models.category_model import Category
 from app.schemas.category_schema import CategorySchema
+
 from db import db
 
 

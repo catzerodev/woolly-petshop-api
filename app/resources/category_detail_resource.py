@@ -1,5 +1,6 @@
 from flask import request
 from flask_restful import Resource
+from flask_jwt_extended import jwt_required
 from pydantic import ValidationError
 
 from app.schemas.category_schema import CategorySchema
@@ -14,15 +15,16 @@ class CategoryDetailResource(Resource):
 
         if category is None:
 
-            return {"message": "Category not found."}, 404
+            return {'message': 'Category not found.'}, 404
 
-            return {
-            "id": category.id,
-            "name": category.name,
-            "description": category.description,
-            "is_active": category.is_active,
+        return {
+            'id': category.id,
+            'name': category.name,
+            'description': category.description,
+            'is_active': category.is_active,
         }, 200
 
+    @jwt_required()
     def put(self, category_id):
 
         try:
@@ -37,25 +39,25 @@ class CategoryDetailResource(Resource):
 
         if category is None:
 
-            return {"message": "Category not found."}, 404
+            return {'message': 'Category not found.'}, 404
 
         return {
-            "message": "Category updated successfully.",
-            "data": {
-                "id": category.id,
-                "name": category.name,
-                "description": category.description,
-                "is_active": category.is_active,
+            'message': 'Category updated successfully.',
+            'data': {
+                'id': category.id,
+                'name': category.name,
+                'description': category.description,
+                'is_active': category.is_active,
             },
         }, 200
 
+    @jwt_required()
     def delete(self, category_id):
         deleted = CategoryService().delete(category_id)
         if not deleted:
-            return {"message": "Category not found."
-                    }, 404
+            return {'message': 'Category not found.'}, 404
             
-        return {"message": "Category deleted successfully."
-                }, 200
+        return {'message': 'Category deleted successfully.'}, 200
+        
         
         

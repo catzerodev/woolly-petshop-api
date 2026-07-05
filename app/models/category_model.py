@@ -2,7 +2,6 @@ from datetime import datetime, UTC
 
 from db import db
 
-
 class Category(db.Model):
 
     __tablename__ = "categories"

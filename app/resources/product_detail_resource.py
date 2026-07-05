@@ -1,5 +1,6 @@
 from flask import request
 from flask_restful import Resource
+from flask_jwt_extended import jwt_required
 from pydantic import ValidationError
 
 from app.schemas.product_schema import ProductSchema
@@ -24,7 +25,8 @@ class ProductDetailResource(Resource):
             'category_id': product.category_id,
             'is_active': product.is_active
         }, 200
-
+        
+    @jwt_required()
     def put(self, product_id):
 
         try:
@@ -51,7 +53,8 @@ class ProductDetailResource(Resource):
                 'is_active': product.is_active
             },
         }, 200
-
+        
+    @jwt_required()
     def delete(self, product_id):
         deleted = ProductService().delete(product_id)
         if not deleted:
