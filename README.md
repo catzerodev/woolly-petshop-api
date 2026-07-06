@@ -29,6 +29,14 @@ La arquitectura del backend está organizada por capas utilizando **Resources**,
 - Zustand
 
 ---
+## 🗄️ Diagrama de Base de Datos
+
+El siguiente diagrama muestra las entidades principales del proyecto y sus relaciones.
+
+![Database Diagram](docs/database-diagram.png)
+
+
+---
 
 ## ✨ Características
 
