@@ -38,6 +38,7 @@ class ProductResource(Resource):
                 'stock': product.stock,
                 'image_url': product.image_url,
                 'category_id': product.category_id,
+                'category': product.category.name,
                 'is_active': product.is_active
             }
             for product in products
